@@ -1,9 +1,4 @@
-# j4eh-7er-koaoccsuu3i8g
-
-[![NPM version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Coveralls Status][coveralls-image]][coveralls-url]
-[![Dependency Status][depstat-image]][depstat-url]
+# Exchange Worker
 
 > A beanstalk helper has following features.
 
@@ -13,47 +8,31 @@
 - Uses JSHint for linting
 - Uses Mocha for unit testing
 
+## Prerequisites
+
+- This app will NOT run on node versions lower than 4.0.0. So install the latest stable version of node.
+- Have beanstalkd and mongodb ready.
+- Install grunt commandline tool - `npm install -g grunt-cli`
+- Run `npm install` on the root dir once you have the enviroment ready.
 
 ## Usage
 
-```js
-import j4eh7erKoaoccsuu3i8g from 'j4eh-7er-koaoccsuu3i8g';
+Exchange worker comes with two scripts which you can use,
 
-j4eh7erKoaoccsuu3i8g('unicorns'); // unicorns
-```
+1. runner.js - Creates Exchange workers based on the config file provided. Sample usage, `node runner.js -f ./default_config.json`
 
-## API
+2. producer.js - Adds jobs to the beanstalkd queue based on the args provided. Sample usage, `node producer.js -n 5 -h 127.0.0.1 -p 11300 -t test_tube`
 
-### j4eh7erKoaoccsuu3i8g(input, [options])
+You can run unit tests using,
 
-#### input
+`grunt test`
 
-*Required*  
-Type: `String`
+Lint using,
 
-Lorem ipsum.
-
-#### options
-
-##### foo
-
-Type: `Boolean`  
-Default: `false`
-
-Lorem ipsum.
+`grunt lint`
 
 ## License
 
 MIT © [Vimukthi Bandara](http://vimukthi.com)
 
-[npm-url]: https://npmjs.org/package/j4eh-7er-koaoccsuu3i8g
-[npm-image]: https://img.shields.io/npm/v/j4eh-7er-koaoccsuu3i8g.svg?style=flat-square
 
-[travis-url]: https://travis-ci.org/vimukthi-git/j4eh-7er-koaoccsuu3i8g
-[travis-image]: https://img.shields.io/travis/vimukthi-git/j4eh-7er-koaoccsuu3i8g.svg?style=flat-square
-
-[coveralls-url]: https://coveralls.io/r/vimukthi-git/j4eh-7er-koaoccsuu3i8g
-[coveralls-image]: https://img.shields.io/coveralls/vimukthi-git/j4eh-7er-koaoccsuu3i8g.svg?style=flat-square
-
-[depstat-url]: https://david-dm.org/vimukthi-git/j4eh-7er-koaoccsuu3i8g
-[depstat-image]: https://david-dm.org/vimukthi-git/j4eh-7er-koaoccsuu3i8g.svg?style=flat-square
