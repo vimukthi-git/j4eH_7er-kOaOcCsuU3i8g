@@ -17,7 +17,7 @@
 
 ## Usage
 
-Exchange worker comes with two scripts which you can use,
+Exchange worker comes with two scripts which you can use in the `bin` directory,
 
 1. runner.js - Creates Exchange workers based on the config file provided. Sample usage, `node runner.js -f ./default_config.json`
 
