@@ -1,0 +1,35 @@
+{
+  "num_forks": 1,
+  "process_frquency" : 3000,
+  "success_wait_duration": 60000,
+  "successful_retry_count": 10,
+  "failed_wait_duration": 3000,
+  "failed_retry_count": 3,
+
+  "beanstalk" :{
+    "host": "127.0.0.1",
+    "port" : 5050,
+    "tube": "vimukthi-git",
+    "api_key" : "0.1"
+  },
+
+  "mongodb" :{
+    "host"     : "127.0.0.1",
+    "port"     : "27017",
+    "database" : "vimukthi-git"
+  },
+
+  "logging" : {
+    "name" : "ExchangeWorker",
+    "src": true,
+    "streams": [
+      {
+        "type": "rotating-file",
+        "path": "./worker.log",
+        "period": "1d",
+        "count": 10
+      }
+    ],
+    "console-log": true
+  }
+}

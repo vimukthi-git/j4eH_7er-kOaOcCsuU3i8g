@@ -5,11 +5,14 @@
 [![Coveralls Status][coveralls-image]][coveralls-url]
 [![Dependency Status][depstat-image]][depstat-url]
 
-> A beanstalk helper
+> A beanstalk helper has following features.
 
-## Install
+- Can run a cluster or a fully distributed set of independent workers to process currency exchange rate requests
+- Connects to Beanstalkd as the queue manager
+- Uses ES6 with nodejs 4.x.x
+- Uses JSHint for linting
+- Uses Mocha for unit testing
 
-    npm install --save j4eh-7er-koaoccsuu3i8g
 
 ## Usage
 

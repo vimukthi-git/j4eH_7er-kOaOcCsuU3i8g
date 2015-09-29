@@ -1,6 +1,8 @@
 .DS_Store
 .idea
+out
 node_modules
 coverage
 npm-debug.log
 index.es5.js
+*.log
