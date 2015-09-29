@@ -10,6 +10,17 @@
 - Uses JSHint for linting
 - Uses Mocha for unit testing
 
+### App main file structure
+
+- bin/runner.js - worker run utility
+- bin/producer.js - exchange job producer
+- bin/default_config.json - example config file used as default by the worker
+- src/consumer.js - main worker class
+- src/constants.js - some common constants
+- src/model/currency_rate_request.js - model for currency rate requests
+- src/model/currency_rate_result.js - model for currency rate results
+- src/test/test.js - unit tests based on mocha
+
 
 
 ## Prerequisites
