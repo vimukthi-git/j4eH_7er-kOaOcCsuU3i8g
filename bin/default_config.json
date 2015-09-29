@@ -7,16 +7,17 @@
   "failed_retry_count": 3,
 
   "beanstalk" :{
-    "host": "127.0.0.1",
-    "port" : 5050,
-    "tube": "vimukthi-git",
-    "api_key" : "0.1"
+    "host": "challenge.aftership.net",
+    "port" : 11300,
+    "tube": "vimukthi-git"
   },
 
   "mongodb" :{
-    "host"     : "127.0.0.1",
-    "port"     : "27017",
-    "database" : "vimukthi-git"
+    "host"     : "ds037283.mongolab.com",
+    "port"     : "37283",
+    "database" : "vimukthi-git",
+    "user" : "vb",
+    "passwd" : "vb123"
   },
 
   "logging" : {

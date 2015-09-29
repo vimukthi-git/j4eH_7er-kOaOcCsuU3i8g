@@ -11,7 +11,7 @@ const SUCCESS_WAIT_DURATION = 60000; // 60 seconds
 const SUCCESSFUL_RETRY_COUNT = 10;
 const FAILED_WAIT_DURATION = 3000; // 3 seconds
 const FAILED_RETRY_COUNT = 3;
-const MONGO_URL = 'mongodb://{url}:{port}/{db}';
+const MONGO_URL = 'mongodb://{userpass}{url}:{port}/{db}';
 const MONGO_COLLECTION_NAME = 'exchange_rates';
 const SCRAP_URL = 'http://www.xe.com/currencyconverter/convert/?Amount=1&From={from}&To={to}#converter';
 const EXTRACT_CSS_PATH = '#contentL > div:nth-child(1) > div:nth-child(3) > div > span > table > tbody > tr.uccRes > td.rightCol';
@@ -28,6 +28,8 @@ const EXTRACT_CSS_PATH = '#contentL > div:nth-child(1) > div:nth-child(3) > div 
  * @property {string} db_url
  * @property {string} db_port
  * @property {string} db_name
+ * @property {string} db_user
+ * @property {string} db_pass
  * @property {number} process_frequency - number of milliseconds the worker will await before attempting to pickup another job
  * @property {number} success_wait_duration
  * @property {number} successful_retry_count
@@ -51,6 +53,8 @@ class Consumer {
      * @param {string} db_url
      * @param {string} db_port
      * @param {string} db_name
+     * @param {string} db_user
+     * @param {string} db_pass
      * @param {number} process_frequency - number of milliseconds the worker will await before re-attempting to pickup another job
      * @param {number} success_wait_duration
      * @param {number} successful_retry_count
@@ -60,7 +64,7 @@ class Consumer {
      * @constructor
      */
     constructor(logger, beanstalk_url, beanstalk_port, beanstalk_tube, db_url, db_port,
-                db_name, process_frequency, success_wait_duration, successful_retry_count,
+                db_name, db_user, db_pass, process_frequency, success_wait_duration, successful_retry_count,
                 failed_wait_duration, failed_retry_count){
         this.logger = logger;
         this.beanstalk_url = beanstalk_url || '127.0.0.1';
@@ -69,6 +73,8 @@ class Consumer {
         this.db_url = db_url || '127.0.0.1';
         this.db_port = db_port || '27017';
         this.db_name = db_name || 'exchange_db';
+        this.db_user = db_user || '';
+        this.db_pass = db_pass || '';
         this.process_frequency = process_frequency || 3000;
         this.is_beanstalk_connected = false;
         this.beanstalk_connection = null;
@@ -435,7 +441,10 @@ class Consumer {
                 resolve(_this.db_connection);
             } else {
                 MongoClient.connect(format(MONGO_URL, {
-                    url: _this.db_url, port: _this.db_port, db: _this.db_name
+                    userpass: _this.db_user !== '' ? _this.db_user + ':' + _this.db_pass + '@' : '',
+                    url: _this.db_url,
+                    port: _this.db_port,
+                    db: _this.db_name
                 }), (err, db) => {
                     if(err){
                         reject(err);

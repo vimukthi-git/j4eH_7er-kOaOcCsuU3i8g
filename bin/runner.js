@@ -36,8 +36,9 @@ if(config_filename) {
         let logger = bunyan.createLogger(configs.logging);
 
         let c = new Consumer(logger, configs.beanstalk.host, configs.beanstalk.port,
-            Constants.BS_TUBE_NAME, configs.mongodb.host, configs.mongodb.port,
-            configs.mongodb.database, configs.process_frequency, configs.success_wait_duration,
+            configs.beanstalk.tube, configs.mongodb.host, configs.mongodb.port,
+            configs.mongodb.database, configs.mongodb.user, configs.mongodb.passwd,
+            configs.process_frequency, configs.success_wait_duration,
             configs.successful_retry_count, configs.failed_wait_duration, configs.failed_retry_count);
 
         c.start();
