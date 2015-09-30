@@ -8,13 +8,7 @@
     "coverage": "isparta cover _mocha index.js -- --require babel/register",
     "precoveralls": "npm run coverage",
     "coveralls": "coveralls < coverage/lcov.info",
-    "test": "mocha --require babel/register",
-    "tdd": "npm test -- --watch",
-    "transpile": "babel src/index.js --out-file index.es5.js",
-    "prepublish": "npm run transpile",
-    "clean": "trash index.es5.js",
-    "push": "git push --follow-tags",
-    "postpublish": "npm-run-all clean push"
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",
