@@ -58,7 +58,7 @@ Exchange worker comes with two scripts which you can use in the `bin` directory,
 
   "beanstalk" :{
 
-    "host": "challenge.aftership.net",
+    "host": "localhost",
 
     "port" : 11300,
 
