@@ -1,43 +1,61 @@
 {
-  "name": "j4eh-7er-koaoccsuu3i8g",
+  "name": "challenge-vb",
+  "description": "",
   "version": "0.0.1",
-  "engine": "node 4.0.0",
-  "description": "A beanstalk helper",
-  "main": "src/index.js",
-  "scripts": {
-    "coverage": "isparta cover _mocha index.js -- --require babel/register",
-    "precoveralls": "npm run coverage",
-    "coveralls": "coveralls < coverage/lcov.info",
-    "test": "grunt test"
+  "homepage": "https://github.com/vimukthi-git/j4eH_7er-kOaOcCsuU3i8g",
+  "author": {
+    "name": "Vimukthi",
+    "email": "vimukthi@aftership.net"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vimukthi-git/j4eh-7er-koaoccsuu3i8g.git"
+    "url": "git@github.com:vimukthi-git/j4eH_7er-kOaOcCsuU3i8g.git"
   },
-  "keywords": [
-    ""
-  ],
-  "author": "Vimukthi Bandara <vimukthi@outlook.com> (http://vimukthi.com)",
-  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vimukthi-git/j4eh-7er-koaoccsuu3i8g/issues"
+    "url": "https://github.com/vimukthi-git/j4eH_7er-kOaOcCsuU3i8g/issues"
   },
-  "homepage": "https://github.com/vimukthi-git/j4eh-7er-koaoccsuu3i8g#readme",
-  "devDependencies": {
-    "coveralls": "*",
-    "grunt": "^0.4.5",
-    "grunt-contrib-jshint": "^0.11.3",
-    "grunt-mocha-test": "^0.12.7",
-    "isparta": "*",
-    "jshint": "^2.8.0",
-    "mocha": "^2.3.3"
+  "main": "bin/runner.js",
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "lint": "grunt lint",
+    "test": "grunt lint && grunt coverage"
   },
   "dependencies": {
+    "@aftership/aftership-config": "^2.11.1",
+    "@aftership/logger": "^2.1.4",
     "bunyan": "^1.5.1",
     "fivebeans": "^1.3.1",
     "minimist": "^1.2.0",
     "mongodb": "^2.0.43",
     "osmosis": "0.0.8",
+    "redis": "^2.4.2",
     "string-template": "^0.2.1"
-  }
+  },
+  "devDependencies": {
+    "eslint": "^1.10.3",
+    "eslint-config-aftership": "^1.5.0",
+    "grunt": "^0.4.5",
+    "grunt-eslint": "^17.3.1",
+    "grunt-mocha-istanbul": "^3.0.1",
+    "istanbul": "^0.4.1",
+    "load-grunt-config": "^0.19.1",
+    "mocha": "^2.3.4",
+    "pre-commit": "^1.1.2",
+    "coveralls": "*",
+    "grunt-contrib-jshint": "^0.11.3",
+    "grunt-mocha-test": "^0.12.7",
+    "isparta": "*",
+    "jshint": "^2.8.0"
+  },
+  "keywords": [
+    "aftership",
+    "challenge"
+  ],
+  "license": "MIT",
+  "pre-commit": [
+    "lint"
+  ],
+  "private": false
 }

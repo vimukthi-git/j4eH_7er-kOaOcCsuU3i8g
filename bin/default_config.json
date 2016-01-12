@@ -13,11 +13,11 @@
   },
 
   "mongodb" :{
-    "host"     : "ds037283.mongolab.com",
-    "port"     : "37283",
-    "database" : "vimukthi-git",
-    "user" : "vb",
-    "passwd" : "vb123"
+    "host"     : "localhost",
+    "port"     : "27017",
+    "database" : "challenge",
+    "user" : "",
+    "passwd" : ""
   },
 
   "logging" : {

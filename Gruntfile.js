@@ -1,37 +1,28 @@
-module.exports = function (grunt) {
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-mocha-test');
+'use strict';
 
-    grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-        // Configure the mochaTest tasks
-        mochaTest: {
-            unit: {
-                options: {
-                    reporter: 'spec',
-                    //captureFile: 'results.txt', // Optionally capture the reporter output to a file
-                    quiet: false, // Optionally suppress output to standard out (defaults to false)
-                    clearRequireCache: false // Optionally clear the require cache before running tests (defaults to false)
-                },
-                src: ['test/**/*.js']
-            }
-        },
+const loadGruntConfig = require('load-grunt-config');
+const path = require('path');
 
-        jshint: {
-            with_overrides: {
-                options: {
-                    esnext: true,
-                    node:true
-                },
-                files: {
-                    src: ['src/**/*.js']
-                }
-            }
-        }
-    });
+module.exports = (grunt) => {
+	loadGruntConfig(grunt, {
+		pkg: grunt.file.readJSON('package.json'), // Loads grunt tasks defined in package.json
+		configPath: path.join(process.cwd(), 'grunt-config'), // path to task.js files, defaults to grunt dir
+		init: true, // auto grunt.initConfig
 
-    grunt.registerTask('default', ['jshint', 'mochaTest:unit']);
-    grunt.registerTask('test', ['mochaTest:unit']);
-    grunt.registerTask('lint', ['jshint']);
+		config: {
+			// additional config vars
+		},
+		loadGruntTasks: {
+			pattern: ['grunt-*', '@*/grunt-*']
+		}
+	});
 
+	// Tasks
+
+	grunt.registerTask('coverage', ['mocha_istanbul:coverage']);
+
+	grunt.registerTask('lint', ['eslint']);
+
+	// Default task
+	grunt.registerTask('default', []);
 };
